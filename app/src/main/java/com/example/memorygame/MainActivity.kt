@@ -33,5 +33,6 @@ class MainActivity : AppCompatActivity() {
        // binding.rv.layoutManager=StaggeredGridLayoutManager(boardSizeEnum.getWidth(),LinearLayoutManager.VERTICAL)
         binding.rv.layoutManager=GridLayoutManager(this,boardSizeEnum.getWidth())
         binding.rv.setHasFixedSize(true)
+        //mmmm
     }
 }
