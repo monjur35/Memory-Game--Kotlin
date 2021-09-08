@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/rooooot"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -46,7 +47,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Moves : 0" />
+                android:text="Points : 0"
+                android:textColor="@color/progress_none"/>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
