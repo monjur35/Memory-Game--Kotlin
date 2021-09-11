@@ -1,12 +1,16 @@
 package com.example.memorygame
 
 import android.animation.ArgbEvaluator
+import android.icu.text.CaseMap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.SeekBar
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memorygame.databinding.ActivityMainBinding
@@ -14,6 +18,7 @@ import com.example.memorygame.models.BoardSizeEnum
 import com.example.memorygame.models.MemoryCard
 import com.example.memorygame.models.MemoryGAme
 import com.example.memorygame.utils.DEFAULT_ICONS
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -42,11 +47,34 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.refresh_menu->{
-                setUpRV()
+                if (memoryGAme.getNumberOfMoves()> 0 && !memoryGAme.haveWon()){
+
+                    showAlertDialog("Quit your current game ?",null,View.OnClickListener {
+                        setUpRV()
+                        //Toast.makeText(this,"sdioas",Toast.LENGTH_SHORT).show()
+
+                    })
+                }
+                else{
+                    setUpRV()
+                }
+
             }
         }
         return super.onOptionsItemSelected(item)
 
+    }
+
+    private fun showAlertDialog(title: String ,view :View?,positiveButtonClickListener: View.OnClickListener) {
+        AlertDialog.Builder(this)
+                AlertDialog.Builder(this)
+            .setTitle(title)
+            .setView(view)
+            .setNegativeButton("Cancel",null)
+            .setPositiveButton("Ok"){_,_ ->
+                positiveButtonClickListener.onClick(null)
+
+            }.show()
     }
 
     private fun setUpRV() {
