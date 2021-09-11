@@ -78,6 +78,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpRV() {
+
+        when(boardSizeEnum){
+            BoardSizeEnum.EASY -> {
+                binding.numberOfMoves.text="Easy : 4x2"
+                binding.points.text="Pairs 0/4"
+            }
+            BoardSizeEnum.MEDIUM -> {
+                binding.numberOfMoves.text="Easy : 6x3"
+                binding.points.text="Pairs 0/9"
+            }
+            BoardSizeEnum.HARD -> {
+                binding.numberOfMoves.text="Hard : 6x4"
+                binding.points.text="Pairs 0/12"
+            }
+        }
+
         memoryGAme = MemoryGAme(boardSizeEnum)
         adapter = MemoryGameAdapter(
             this,
