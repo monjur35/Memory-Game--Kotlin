@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.refresh_menu->{
-
+                setUpRV()
             }
         }
         return super.onOptionsItemSelected(item)
